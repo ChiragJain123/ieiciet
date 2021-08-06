@@ -1,0 +1,380 @@
+#root {
+	position: relative;
+}
+#content:not(#content.events) {
+	margin-top: 20px;
+	min-height: 95vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+body.appInstallPrompted #content {
+	margin-bottom: 30px;
+}
+#content.signup:not(#content.events) {
+	margin-top: 100px;
+	min-height: 95vh;
+}
+#content.signup:not(#content.events) .main:not(#content.not-form .main) {
+	padding: 10px 0;
+}
+/* --------------------------- User Profile form specific --------------------- */
+#content.signup:not(#content.events).userProfileForm {
+	min-height: 85vh;
+}
+body.appInstallPrompted #content.signup:not(#content.events).userProfileForm {
+	margin-top: 180px;
+}
+body.appInstallPrompted
+	#content.signup:not(#content.events).userProfileForm
+	.main:not(#content.not-form .main) {
+	margin-top: 0px;
+}
+#root div.conditionalBtn:not(#content.not-form div.conditionalBtn) {
+	width: 85%;
+	margin-bottom: 50px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+#root div.conditionalBtn:not(#content.not-form div.conditionalBtn) button {
+	padding: 15px;
+	border-radius: 5px;
+	background-color: var(--green);
+	color: var(--light-navy);
+	font-weight: 600;
+	font-size: 12px;
+}
+#root div.conditionalBtn:not(#content.not-form div.conditionalBtn) button.ml {
+	margin-left: 25px;
+}
+
+.main:not(#content.not-form .main) {
+	min-height: 0;
+	padding: 50px 0;
+	width: 30%;
+	border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid var(--green);
+	background-color: var(--light-navy);
+	box-shadow: 0px 2px 6px 2px rgb(100, 255, 218, 50%),
+		2px 0px 6px 2px rgba(100, 255, 218, 50%),
+		7px 0px 4px 2px rgba(0, 0, 0, 50%), 0px 7px 4px 2px rgba(0, 0, 0, 50%);
+}
+.main:not(#content.not-form .main).create-event,
+.main:not(#content.not-form .main).register-event {
+	width: 50%;
+}
+.main:not(#content.not-form .main) > div {
+	display: flex;
+	flex-direction: column;
+	margin: 10px 0;
+	width: 80%;
+	position: relative;
+}
+div.form-row {
+	margin-top: 40px;
+}
+div.form-row.no-margin {
+	margin-top: 5px;
+}
+div.form-row.otp div {
+	display: flex;
+	justify-content: space-between;
+}
+div.form-row.otp div > div {
+	width: 8%;
+	position: relative;
+}
+div.form-row.otp input {
+	width: 100%;
+	text-align: center;
+}
+div.form-row.otp div > div::after {
+	content: '';
+	position: absolute;
+	bottom: 0px;
+	left: 45%;
+	height: 2px;
+	width: 10px;
+	background-color: var(--green);
+	transition-duration: 0.2s;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	visibility: hidden;
+}
+div.form-row.otp div > div.isFocused:after {
+	visibility: visible;
+	left: 0;
+	width: 100%;
+}
+.visibility-icon {
+	text-align: right;
+	margin-right: 5px;
+	margin-top: -25px;
+	cursor: pointer;
+	width: 25px;
+	align-self: flex-end;
+	z-index: 2;
+}
+.files-uploader-icon {
+	text-align: right;
+	margin-right: 5px;
+	margin-top: -33px;
+	align-self: flex-end;
+	z-index: 2;
+	/* letter-spacing: 0.5ch; */
+}
+.main:not(#content.not-form .main) > div.form-button {
+	flex-direction: row;
+	justify-content: flex-end;
+	flex-wrap: wrap;
+}
+.main:not(#content.not-form .main) > div.form-button#userProfile {
+	justify-content: center;
+}
+.main:not(#content.not-form .main) div button {
+	width: 25%;
+	padding: 10px;
+	font-size: 1rem;
+	border-radius: 2px;
+	background-color: var(--green);
+	color: var(--lightest-navy);
+	font-weight: 600;
+	box-shadow: 0 2px 2px 0 rgba(100, 255, 218, 14%),
+		0 3px 1px -2px rgba(100, 255, 218, 20%),
+		0 1px 5px 0 rgba(100, 255, 218, 12%);
+	margin-bottom: 15px;
+}
+.main:not(#content.not-form .main) > div.form-button#userProfile button {
+	width: 35%;
+}
+.main:not(#content.not-form .main)
+	> div.form-button#userProfile
+	button#changePwd {
+	width: 50%;
+	padding: 0;
+}
+.main:not(#content.not-form .main) > div.form-button#resetPassword button {
+	width: 40%;
+}
+.main:not(#content.not-form .main) div.form-button#contactBtn button {
+	width: 35%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#contactBtn button .spinner-border {
+	width: 1.5rem;
+	height: 1.5rem;
+}
+.main:not(#content.not-form .main)
+	> div.form-button#userProfile
+	button#changePwd
+	a {
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
+.main:not(#content.not-form .main) div button a {
+	width: 100%;
+	padding: 0;
+}
+.main:not(#content.not-form .main) div button a:focus,
+.main:not(#content.not-form .main) div button a:hover {
+	color: var(--lightest-navy);
+}
+/* .main:not(#content.not-form .main) div button.button-lg {
+	width: 25%;
+} */
+.form-head h2 {
+	font-size: 2rem;
+}
+.error-wrapper {
+	min-height: 16px;
+}
+
+/* ------------------ Modal Section --------------------------------- */
+#modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 12;
+	transition: visibility 1s ease;
+	overflow-y: auto;
+}
+#modal .main:not(#content.not-form .main) {
+	margin: auto;
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+.create-event {
+	animation: scale-up 1s both ease;
+}
+
+@media (max-width: 1200px) {
+	.main:not(#content.not-form .main) {
+		width: 40%;
+	}
+	.main:not(#content.not-form .main).create-event,
+	.main:not(#content.not-form .main).register-event {
+		width: 60%;
+	}
+}
+@media (max-width: 1024px) {
+	.main:not(#content.not-form .main) {
+		width: 50%;
+	}
+	.main:not(#content.not-form .main).create-event,
+	.main:not(#content.not-form .main).register-event {
+		width: 70%;
+	}
+}
+@media (max-width: 768px) {
+	.main:not(#content.not-form .main) {
+		width: 60%;
+	}
+	.main:not(#content.not-form .main).create-event,
+	.main:not(#content.not-form .main).register-event {
+		width: 80%;
+	}
+	.main:not(#content.not-form .main) div button.button-lg {
+		width: 30%;
+	}
+}
+@media (max-width: 540px) {
+	.main:not(#content.not-form .main) {
+		width: 80%;
+	}
+	.main:not(#content.not-form .main).create-event,
+	.main:not(#content.not-form .main).register-event {
+		width: 90%;
+	}
+	.main:not(#content.not-form .main) div button.button-lg {
+		width: 35%;
+	}
+	.main:not(#content.not-form .main) > div.form-button#resetPassword button {
+		width: 50%;
+	}
+	.main:not(#content.not-form .main) div.form-button#contactBtn button {
+		width: 45%;
+	}
+	/* -------------- User Profile Specific Content Section ---------------- */
+	body.appInstallPrompted
+		#content.signup:not(#content.events).userProfileForm {
+		margin-top: 150px;
+	}
+}
+@media (max-width: 415px) {
+	#root {
+		/* margin-top: 90px; */
+	}
+	#content {
+		min-height: 100vh;
+	}
+	#content.signup:not(#content.events) {
+		margin-bottom: 30px;
+	}
+	.main:not(#content.not-form .main) {
+		padding: 10px 0;
+		width: 90%;
+		margin-top: 15px;
+	}
+	.main:not(#content.not-form .main) div button {
+		width: 40%;
+	}
+	.main:not(#content.not-form .main) > div.form-button#userProfile button {
+		width: 40%;
+	}
+	.main:not(#content.not-form .main) div.form-button button.button-lg {
+		width: 50%;
+	}
+	.main:not(#content.not-form .main) div.form-button#createEvent {
+		flex-wrap: nowrap;
+	}
+	.main:not(#content.not-form .main)
+		> div.form-button#userProfile
+		button#changePwd {
+		width: 65%;
+	}
+	.main:not(#content.not-form .main) > div.form-button#resetPassword button {
+		width: 60%;
+	}
+	.main:not(#content.not-form .main) div.form-button#contactBtn button {
+		width: 60%;
+	}
+	#content.signup:not(#content.events) {
+		margin-top: 100px;
+		min-height: 92vh;
+	}
+	#content.signup:not(#content.events) .update-pwd {
+		min-height: 80vh;
+	}
+	/* -------------- User Profile Specific Content Section ---------------- */
+	#content.signup:not(#content.events) .userProfileForm {
+		margin-bottom: 25px;
+	}
+	body.appInstallPrompted
+		#content.signup:not(#content.events).userProfileForm {
+		margin-top: 120px;
+	}
+	#root div.conditionalBtn:not(#content.not-form div.conditionalBtn) {
+		width: 100%;
+		margin-bottom: 25px;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	#root div.conditionalBtn:not(#content.not-form div.conditionalBtn) button {
+		width: 50%;
+	}
+	#root
+		div.conditionalBtn:not(#content.not-form div.conditionalBtn)
+		button.ml {
+		margin-left: 0;
+		margin-top: 25px;
+	}
+
+	.files-uploader-icon {
+		margin-right: -30px;
+	}
+	.files-uploader-icon .spinner-border {
+		margin-left: 1px !important;
+		width: 1rem;
+		height: 1rem;
+	}
+	body.appInstallPrompted
+		#root
+		div.conditionalBtn:not(#content.not-form div.conditionalBtn) {
+		top: 30px;
+	}
+}
+@media (max-width: 320px) {
+	#content.signup:not(#content.events) {
+		margin-top: 120px;
+		margin-bottom: 10px;
+	}
+	.main:not(#content.not-form .main) > div.form-button#userProfile button {
+		width: 44%;
+	}
+	.main:not(#content.not-form .main)
+		> div.form-button#userProfile
+		button#changePwd {
+		width: 100%;
+	}
+	.main:not(#content.not-form .main) > div.form-button#resetPassword button {
+		width: 70%;
+	}
+	.main:not(#content.not-form .main) div.form-button#contactBtn button {
+		width: 80%;
+	}
+	/* -------------- User Profile Specific Content Section ---------------- */
+	#root div.conditionalBtn:not(#content.not-form div.conditionalBtn) button {
+		width: 60%;
+	}
+}

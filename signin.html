@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a192f">
+    <meta name="description"
+        content=" IE(I) Student Chapter is a statutory body of engineers to promote and advance engineering and technology throughout the country." />
+    <meta name="keywords"
+        content="IEI, IEI-CIET, IE(I), Student's Chapter, IE(I) Society, Society, Chitkara University, IE(I) Chitkara, iei, ie(i), iei-ciet, ieiciet" />
+    <meta name="language" content="English" />
+    <meta name="author" content="IEI CIET" />
+
+    <!-- Registering a Service Worker -->
+    <script>
+        function registerServiceWorker() {
+            if ("serviceWorker" in navigator) {
+                navigator.serviceWorker
+                    .register("./service-worker.js")
+                    .then((reg) => { })
+                    .catch((e) =>
+                        console.error("Error during service worker registration:", e)
+                    );
+            } else {
+                console.warn("Service Worker is not supported");
+            }
+        }
+        registerServiceWorker();
+    </script>
+
+    <!-- Mainfest File & Favicon -->
+    <link rel="icon" href="./assets/icons/favicon.ico" />
+    <link rel="apple-touch-icon" href="./assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="./manifest.json">
+
+    <script>
+        if (localStorage.getItem('uid')) {
+            location.assign('/user/profile.html')
+        }
+    </script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+
+    <script src="./js/auth.js"></script>
+    <script src="./js/ipTracker.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+    <!-- Google Material Icons -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
+    <!-- Css -->
+    <link rel="stylesheet" href="./css/root.css">
+    <link rel="stylesheet" href="./css/keyframes.css">
+    <link rel="stylesheet" href="./css/loader.css">
+    <link rel="stylesheet" href="./css/nav.css">
+    <link rel="stylesheet" href="./css/sidebars.css">
+    <link rel="stylesheet" href="./css/form.css">
+    <title>IEI CIET | Signin</title>
+</head>
+
+
+<body oncontextmenu="return false;">
+    <div id="appInstallPrompt">
+        <p>Download the IE(I) app for better experience</p>
+        <div>
+            <button type="button" id="cancel" onclick="hideDownloadPrompt()">Cancel</button>
+            <button type="button" onclick="downloadButtonClick()">Download</button>
+        </div>
+        <span class="material-icons-outlined" onclick="hideDownloadPrompt()">close</span>
+    </div>
+    <div class="nav-loader">
+        <div class="nav-loader-inner"></div>
+    </div>
+    <!-- Header Section -->
+    <div id="root">
+        <header class="nav_StyledHeader header">
+            <nav class="nav">
+                <div class="logo fade-enter-done" tabindex="-1">
+                    <a href="./index.html" aria-label="home">
+                        </svg>
+                    </a>
+                </div>
+                <div class="nav-link">
+                    <ol>
+                        <li class="fadedown-enter-done" style="transition-delay: 0ms;"><a
+                                href="./index.html#home">Home</a>
+                        <li class="fadedown-enter-done" style="transition-delay: 0ms;"><a href="./gallery.html">Events
+                                Gallery</a>
+                        </li>
+                        <li class="fadedown-enter-done" style="transition-delay: 100ms;"><a
+                                href="./upcoming-events.html">Upcoming
+                                Events</a>
+                        </li>
+                        <li class="fadedown-enter-done" style="transition-delay: 200ms;"><a
+                                href="./past-events.html">Past
+                                Events</a></li>
+                        <li class="fadedown-enter-done" style="transition-delay: 300ms;"><a href="./team.html">Team
+                                IEI</a>
+                        </li>
+                        <li class="fadedown-enter-done" style="transition-delay: 300ms;"><a
+                                href="./contact.html">Contact</a>
+                        </li>
+                        <li class="fadedown-enter-done user-icon" style="transition-delay: 300ms;">
+                            <a href="">
+                                <span class="material-icons-outlined">
+                                    account_circle
+                                </span>
+                            </a>
+                        </li>
+                    </ol>
+                </div>
+                <div class="menu fade-enter-done">
+                    <div>
+                        <button aria-label="Menu" class="hamburger" onclick="toggleMenubar(this)">
+                            <div class="ham-box">
+                                <div class="ham-box-inner"></div>
+                            </div>
+                        </button>
+                        <aside aria-hidden="true" tabindex="-1" class="menu_StyledSidebar menubar">
+                            <nav>
+                                <ol>
+                                    <li><a href="./index.html#home">Home</a></li>
+                                    <li><a href="./gallery.html">Events Gallery</a></li>
+                                    <li><a href="./upcoming-events.html">Upcoming Events</a>
+                                    </li>
+                                    <li><a href="./past-events.html">Past Events</a></li>
+                                    <li><a href="./team.html">Team IEI</a>
+                                    </li>
+                                    <li><a href="./contact.html">Contact</a>
+                                    </li>
+                                    <li class="user-icon">
+                                        <a href="">
+                                            <span class="material-icons-outlined">
+                                                account_circle
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ol>
+                            </nav>
+                        </aside>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <!----------------------------------- Right and Left Bars -------------------------------------->
+        <div orientation="left" class="left-bar visible slide-up animation-delay delay-1pt5">
+            <ul class="left-bar-ol fade-enter-done">
+                <li>
+                    <a href="https://github.com/ieiciet" aria-label="GitHub" target="_blank" rel="noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-github">
+                            <title>GitHub</title>
+                            <path
+                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                            </path>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/ieiciet" aria-label="Instagram" target="_blank"
+                        rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-instagram">
+                            <title>Instagram</title>
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16
+                                            11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg></a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/ieicsecuiet/" aria-label="Linkedin" target="_blank"
+                        rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-linkedin">
+                            <title>LinkedIn</title>
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2
+                                            0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg></a>
+                </li>
+            </ul>
+        </div>
+        <div orientation="right" class="right-bar visible slide-up animation-delay delay-1pt5">
+            <div class="email__StyledLinkWrapper-sc-2epoq-0 right-bar-div fade-enter-done"><a
+                    href="mailto:iei.cse@chitkara.edu.in">iei.cse@chitkara.edu.in</a></div>
+        </div>
+        <!------------------------ Content Zone ------------------------------------------------>
+        <div id="content" tabindex="-1">
+            <main class="main signin">
+                <div class="form-head">
+                    <h2>SIGN IN</h2>
+                </div>
+                <div class="form-row">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" value="" required readonly onfocus="addFocus(this, 0)"
+                        onblur="removeFocus(this, 0)" oninput="removeError(this, 0)">
+                    <div class="error-wrapper">
+                        <p class="text-input-error"></p>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="pwd">Password</label>
+                    <input type="password" name="pwd" id="pwd" required readonly onfocus="addFocus(this, 1)"
+                        onblur="removeFocus(this, 1)" oninput="removeError(this, 1)">
+                    <span class="material-icons-outlined visibility-icon" onclick="togglePwd(this)">
+                        visibility
+                    </span>
+                    <div class="error-wrapper">
+                        <p class="text-input-error"></p>
+                        <p class="support-text">Forgot Password? Click <a class="a" href="./resetPassword.html">here</a>
+                            to reset
+                        </p>
+                    </div>
+                </div>
+                <div class="form-button">
+                    <button onclick="signin(this)">Sign-in</button>
+                </div>
+                <div class="form-row no-margin">
+                    <p class="support-text">New to IEI CIET? Register <a class="a" href="./signup.html">here</a></p>
+                </div>
+
+            </main>
+        </div>
+        <div id="footer-text" class="short-form">
+            Developed by <a class="a" href="./team.html">Web Team</a> IEI CIET
+        </div>
+    </div>
+
+    <script src="./js/navbar.js"></script>
+    <script src="./js/form.js"></script>
+    <script>
+        window.addEventListener('offline', () => {
+            window.location.reload();
+        });
+    </script>
+    <script src="./js/downloadPrompt.js"></script>
+    <script>
+        async function addCache() {
+            let cache = await caches.open('offline');
+            await cache.addAll([
+                './',
+                './assets/icons/favicon.ico',
+                './assets/icons/apple-touch-icon.png',
+                './assets/bg/logo.png',
+                './css/root.css',
+                './css/keyframes.css',
+                './css/loader.css',
+                './css/nav.css',
+                './css/sidebars.css',
+                './css/index.css',
+                './js/navbar.js',
+            ]);
+        }
+        addCache();
+    </script>
+</body>
+
+</html>

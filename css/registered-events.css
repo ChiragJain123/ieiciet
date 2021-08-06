@@ -1,0 +1,33 @@
+body {
+	background-color: var(--navy);
+	overflow-x: hidden;
+}
+
+main.fillHeight {
+	margin-top: 100px;
+}
+
+body.appInstallPrompted main.fillHeight {
+	margin-top: 160px;
+}
+
+@media (max-width: 1080px) {
+	.container-fluid {
+		padding: 0;
+	}
+	main.fillHeight {
+		padding: 0px 20px;
+	}
+}
+
+@media (max-width: 768px) {
+	main.fillHeight {
+		padding: 0px 10px;
+	}
+}
+
+@media (max-width: 480px) {
+	body.appInstallPrompted main.fillHeight {
+		margin-top: 100px;
+	}
+}

@@ -1,0 +1,25 @@
+{
+	"title": "IEI CIET Student's Chapter",
+	"$schema": "http://json.schemastore.org/web-manifest",
+	"short_name": "IE(I) CIET",
+	"name": "IE(I) CIET Student's Chapter",
+	"description": "IE(I) Student Chapter is a statutory body  of engineers to promote and advance engineering and technology throughout the country.",
+	"theme_color": "#0a192f",
+	"background_color": "#0a192f",
+	"display": "standalone",
+	"orientation": "portrait",
+	"scope": "/",
+	"start_url": "/index.html",
+	"icons": [
+		{
+			"src": "./assets/icons/icons-192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "./assets/icons/icons-512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	]
+}

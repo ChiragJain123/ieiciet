@@ -1,0 +1,166 @@
+/*--------------- Users Card Section ---------------------------------*/
+.data-list-card .card-body {
+	overflow: auto;
+	padding-bottom: 0;
+}
+.data-list-card .card-body table {
+	display: table;
+	overflow: auto;
+	transition: all 1s ease;
+	animation: fade-in 1s ease both;
+}
+.data-list-card .card-body table .table-icons {
+	cursor: pointer;
+	/* margin-right: 15px; */
+}
+.data-list-card .card-body table tbody tr.editor {
+	background-color: #fff;
+}
+.data-list-card .card-body table tbody tr.editor td {
+	padding: 0;
+}
+.data-list-card .card-body table tbody tr.editor td div.collapse {
+	border: 1px solid var(--admin-panel-cards-bg);
+	padding: 15px 0 30px 15px;
+	overflow: auto;
+	max-height: 300px;
+	/* min-height: 300px; */
+	transition: all 0.5s ease;
+	font-family: Roboto, 'Helvetica Neue', sans-serif;
+	font-size: 15px;
+	font-weight: 700;
+	color: rgb(97, 97, 97);
+	width: 100%;
+	user-select: text;
+}
+.data-list-card
+	.card-body
+	table
+	tbody
+	tr.editor
+	td
+	div.collapse::-webkit-scrollbar-track {
+	background: #fff;
+}
+
+.collapse {
+	scroll-behavior: unset;
+}
+
+.data-tree ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.data-tree li {
+	list-style-type: none;
+	margin: 0;
+	margin-left: 33px;
+	padding: 0;
+	display: block;
+	line-height: 26px;
+	white-space: nowrap;
+	background-position: -99px 0;
+	background-repeat: repeat-y;
+	background-color: transparent;
+	background-image: url('../../assets/database/data-tree-sprites.png');
+}
+.data-tree-default-ul > li {
+	margin-left: 5px;
+}
+.data-tree li:last-child {
+	background: transparent;
+}
+.data-tree-default {
+	margin-bottom: 5px;
+}
+.data-tree .data-tree-closed > div > ins {
+	background-position: -33px 0;
+}
+.data-tree .data-tree-open > div > ins {
+	background-position: 0 0;
+}
+.data-tree .data-tree-leaf > div > ins {
+	background-position: -66px 0;
+}
+.data-tree ins {
+	width: 24px;
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-block;
+	height: 28px;
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	width: 33px;
+}
+.data-tree .data-tree-icon {
+	background-color: transparent;
+	background-image: url('../../assets/database/data-tree-sprites.png');
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+.data-tree .data-tree-content {
+	border: 1px transparent solid;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	padding: 2px 4px;
+	text-align: center;
+	transition: none;
+}
+.data-tree .data-tree-input {
+	padding: 0px 3px;
+	margin-left: -4px;
+	height: 25px;
+	font-family: 'Roboto Mono', monospace;
+	font-size: 14px;
+	font-weight: 400;
+	color: rgba(0, 0, 0, 0.87);
+	border-bottom: none;
+	min-width: 5ch;
+}
+.data-tree .data-tree-input:disabled {
+	color: grey;
+}
+.data-tree .data-tree-input::selection,
+.data-list-card
+	.card-body
+	table
+	tbody
+	tr.editor
+	td
+	div.collapse
+	span::selection,
+.data-list-card
+	.card-body
+	table
+	tbody
+	tr.editor
+	td
+	div.collapse
+	div::selection {
+	background-color: #1e73db;
+	color: #fff;
+}
+.data-tree .data-tree-leaf:hover .data-tree-content {
+	border: 1px solid #a8adb3;
+	border-radius: 0;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+}
+.data-tree .data-tree-leaf:hover .data-tree-input {
+	border: 1px solid #565d63;
+	border-radius: 0;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+.data-tree .data-tree-leaf:hover .data-tree-input:disabled {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 540px) {
+	.data-list-card .card-body {
+		padding: 0;
+		padding-top: 15px;
+	}
+}

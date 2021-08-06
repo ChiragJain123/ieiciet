@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a192f">
+    <meta name="description"
+        content=" IE(I) Student Chapter is a statutory body of engineers to promote and advance engineering and technology throughout the country." />
+    <meta name="keywords"
+        content="IEI, IEI-CIET, IE(I), Student's Chapter, IE(I) Society, Society, Chitkara University, IE(I) Chitkara, iei, ie(i), iei-ciet, ieiciet" />
+    <meta name="language" content="English" />
+    <meta name="author" content="IEI CIET" />
+
+    <!-- Mainfest File & Favicon -->
+    <link rel="icon" href="./assets/icons/favicon.ico" />
+    <link rel="apple-touch-icon" href="./assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="./manifest.json">
+
+    <!-- Registering a Service Worker -->
+    <script>
+        function registerServiceWorker() {
+            if ("serviceWorker" in navigator) {
+                navigator.serviceWorker
+                    .register("./service-worker.js")
+                    .then((reg) => { })
+                    .catch((e) =>
+                        console.error("Error during service worker registration:", e)
+                    );
+            } else {
+                console.warn("Service Worker is not supported");
+            }
+        }
+        registerServiceWorker();
+    </script>
+
+    <!-- Firebase  -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+
+    <script src="./js/ipTracker.js"></script>
+    <script>tracker(findLocationAndUpdateStats);</script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- Google Material Icons -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
+    <!-- Css -->
+    <link rel="stylesheet" href="./css/root.css">
+    <link rel="stylesheet" href="./css/keyframes.css">
+    <link rel="stylesheet" href="./css/loader.css">
+    <link rel="stylesheet" href="./css/nav.css">
+    <link rel="stylesheet" href="./css/sidebars.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>IEI CIET</title>
+</head>
+
+<body oncontextmenu="return false;" onmousedown="return false;">
+    <div id="appInstallPrompt">
+        <p>Download the IE(I) app for better experience</p>
+        <div>
+            <button type="button" id="cancel" onclick="hideDownloadPrompt()">Cancel</button>
+            <button type="button" onclick="downloadButtonClick()">Download</button>
+        </div>
+        <span class="material-icons-outlined" onclick="hideDownloadPrompt()">close</span>
+    </div>
+    <div class="overlay-loader">
+        <div class="swinging-logo">
+            <h1>IEI CIET</h1>
+        </div>
+    </div>
+    <div class="nav-loader">
+        <div class="nav-loader-inner"></div>
+    </div>
+    <!-- Header Section -->
+    <div id="root">
+        <header class="nav_StyledHeader header">
+            <nav class="nav">
+                <div class="logo fade-enter-done" tabindex="-1">
+                    <a href="#" aria-label="home">
+                        </svg>
+                    </a>
+                </div>
+                <div class="nav-link">
+                    <ol>
+                        <li class="fadedown-enter-done visible slide-down"><a href="./index.html#home">Home</a>
+                        <li class="fadedown-enter-done visible slide-down animation-delay delay-pt25"><a
+                                href="./gallery.html">Events Gallery</a>
+                        </li>
+                        <li class="fadedown-enter-done visible slide-down animation-delay delay-pt75"><a
+                                href="./upcoming-events.html">Upcoming
+                                Events</a>
+                        </li>
+                        <li class="fadedown-enter-done visible slide-down animation-delay delay-1"><a
+                                href="./past-events.html">Past
+                                Events</a></li>
+                        <li class="fadedown-enter-done visible slide-down animation-delay delay-1pt25"><a
+                                href="./team.html">Team
+                                IEI</a>
+                        </li>
+                        <li class="fadedown-enter-done visible slide-down animation-delay delay-1pt5"><a
+                                href="./contact.html">Contact</a>
+                        </li>
+                        <li class="fadedown-enter-done user-icon visible slide-down animation-delay delay-1pt75">
+                            <a href="">
+                                <span class="material-icons-outlined">
+                                    account_circle
+                                </span>
+                            </a>
+                        </li>
+                    </ol>
+                </div>
+                <div class="menu fade-enter-done">
+                    <div>
+                        <button aria-label="Menu" class="hamburger" onclick="toggleMenubar(this)">
+                            <div class="ham-box">
+                                <div class="ham-box-inner"></div>
+                            </div>
+                        </button>
+                        <aside aria-hidden="true" tabindex="-1" class="menu_StyledSidebar menubar">
+                            <nav>
+                                <ol>
+                                    <li><a href="./index.html#home">Home</a></li>
+                                    <li><a href="./gallery.html">Events Gallery</a></li>
+                                    <li><a href="./upcoming-events.html">Upcoming Events</a>
+                                    </li>
+                                    <li><a href="./past-events.html">Past Events</a></li>
+                                    <li><a href="./team.html">Team IEI</a>
+                                    </li>
+                                    <li><a href="./contact.html">Contact</a>
+                                    </li>
+                                    <li class="user-icon">
+                                        <a href="">
+                                            <span class="material-icons-outlined">
+                                                account_circle
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ol>
+                            </nav>
+                        </aside>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <!----------------------------------- Right and Left Bars -------------------------------------->
+        <div orientation="left" class="left-bar visible slide-up animation-delay delay-1pt5">
+            <ul class="left-bar-ol fade-enter-done">
+                <li>
+                    <a href="https://github.com/ieiciet" aria-label="GitHub" target="_blank" rel="noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-github">
+                            <title>GitHub</title>
+                            <path
+                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                            </path>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/ieiciet" aria-label="Instagram" target="_blank"
+                        rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-instagram">
+                            <title>Instagram</title>
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16
+                                    11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg></a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/ieicsecuiet/" aria-label="Linkedin" target="_blank"
+                        rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-linkedin">
+                            <title>LinkedIn</title>
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2
+                                    0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg></a>
+                </li>
+            </ul>
+        </div>
+        <div orientation="right" class="right-bar visible slide-up animation-delay delay-1pt5">
+            <div class="email__StyledLinkWrapper-sc-2epoq-0 right-bar-div fade-enter-done"><a
+                    href="mailto:iei.cse@chitkara.edu.in">iei.cse@chitkara.edu.in</a></div>
+        </div>
+        <!------------------------ Content Zone ------------------------------------------------>
+        <div id="content" tabindex="-1">
+            <main class="main fillHeight">
+                <!---------------------------Landing Text Section  ----------------------------->
+                <section class="landing-section" id="home">
+                    <div class="animate slide-up animation-delay delay-pt5">
+                        <h2 class="big-heading">IEI CIET</h2>
+                    </div>
+                    <div class="animate slide-up animation-delay delay-pt75">
+                        <h3 class="big-heading">STUDENT'S CHAPTER</h3>
+                    </div>
+                    <div class="animate slide-up no-mobile-animate animation-delay delay-1">
+                        <p>
+                            IE(I) Student Chapter is a <span class="a">statutory body</span> of engineers to promote and
+                            advance
+                            engineering and technology throughout the country.
+                        </p>
+                        <p>
+                            Ever since its inception, IEI has been the <span class="a">forerunner</span> in setting up
+                            national
+                            standards for promoting the country’s
+                            industrial base which culminated in the formation of the <span class="a">Indian Standard
+                                Institution
+                                (ISI)</span>, now called as Bureau of
+                            Indian Standards (BIS).
+                        </p>
+                    </div>
+                    <div class="animate slide-up no-mobile-animate animation-delay delay-1pt25">
+                        <a href="./contact.html" class="email-link">Contact Us</a>
+                    </div>
+                </section>
+                <!-------------------------- About Section -------------------------------------------------->
+                <section id="about" class="about-section">
+                    <h2 class="numbered-heading animate slide-up no-mobile-animate" id="about-us-heading">About Us</h2>
+                    <div class="inner">
+                        <div class="about-content">
+                            <div>
+                                <p class=" animate slide-up no-mobile-animate">
+                                    IEI, a royal charter beneficiary in 1935, has been sanctioned as a <span
+                                        class="a">Scientific and
+                                        Industrial Research Organization
+                                        (SIRO)</span> by the Ministry of Science & Technology, Govt. of India. Besides
+                                    conducting
+                                    its research, it provides
+                                    <span class="a">Grant-in-Aid</span> to UG/PG/Ph.D. students of Engineering
+                                    Institutes & Universities.
+                                </p>
+                                <p class=" animate slide-up no-mobile-animate">
+                                    The Institution has been serving the engineering fraternity for over a Century with
+                                    its national and international
+                                    presence through <span class="a">125 Centres</span> spread all over India, <span
+                                        class="a">6 Overseas Chapters</span>, <span class="a">6 Fora</span>, and
+                                    an Organ namely <span class="a">Engineering Staff
+                                        College of India (ESCI)</span>, Hyderabad. The Institution encompasses 15
+                                    (fifteen)
+                                    engineering disciplines with a Corporate
+                                    membership of over 2 lakhs.
+                                    IEI issues <span class="a">membership certification</span> to eligible engineers,
+                                    technologists, and
+                                    scientists. Charter Engineer, Professional
+                                    Engineer, and International Professional Engineer certifications in various
+                                    engineering disciplines are also issued by
+                                    this Institution.
+                                </p>
+                                <p class=" animate slide-up no-mobile-animate">
+                                    Here are some of the <span class="a">major benefits</span> of joining IE(I) CIET
+                                    Student's Chapter
+                                </p>
+                            </div>
+                            <ul class="skills-list animate slide-up no-mobile-animate">
+                                <li>Workshops</li>
+                                <li>Seminars</li>
+                                <li>Coding Competitions</li>
+                                <li>Code Wars</li>
+                                <li>Tech Events</li>
+                                <li>Hackathons</li>
+                            </ul>
+                        </div>
+                        <div class="swinging-logo animate no-mobile-animate slide-right">
+                            <h1>IEI CIET</h1>
+                        </div>
+                    </div>
+                </section>
+                <div id="footer-text">
+                    Developed by <a class="a" href="./team.html">Web Team</a> IEI CIET
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="./js/loader.js"></script>
+    <script src="./js/navbar.js"></script>
+    <script src="./js/index.js"></script>
+    <script>
+        window.addEventListener('offline', () => {
+            window.location.reload();
+        });
+    </script>
+    <script src="./js/downloadPrompt.js"></script>
+</body>
+
+</html>

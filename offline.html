@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />>
+
+    <!-- Mainfest File & Favicon -->
+    <link rel="icon" href="./assets/icons/favicon.ico" />
+    <link rel="apple-touch-icon" href="./assets/icons/apple-touch-icon.png">
+
+    <!-- Css -->
+    <link rel="stylesheet" href="./css/root.css">
+    <link rel="stylesheet" href="./css/keyframes.css">
+    <link rel="stylesheet" href="./css/loader.css">
+    <link rel="stylesheet" href="./css/nav.css">
+    <link rel="stylesheet" href="./css/sidebars.css">
+    <link rel="stylesheet" href="./css/index.css">
+
+    <style>
+        .nav-link ol li:last-of-type a::before {
+            content: '0'counter(item) '.';
+            margin-right: 5px;
+            color: var(--green);
+            font-size: var(--fz-xxs);
+            text-align: right;
+        }
+
+        .nav-loader {
+            height: 40px;
+            visibility: visible;
+            background-color: var(--dark-navy);
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-loader p {
+            font-size: 0.8rem;
+            color: var(--green);
+            margin-right: 20px;
+        }
+
+        #reload {
+            border-radius: 2px;
+            background-color: var(--green);
+            color: var(--light-navy);
+        }
+
+        .header {
+            top: 50px;
+        }
+
+        .header-sticky {
+            top: 40px;
+        }
+    </style>
+    <title>IEI CIET</title>
+</head>
+
+<body oncontextmenu="return false;" onmousedown="return false;">
+    <div class="nav-loader">
+        <p>No Internet Connection. Click Here to Reload.</p>
+        <button type="button" id="reload">⤾ Reload</button>
+    </div>
+    <!-- Header Section -->
+    <div id="root">
+        <header class="nav_StyledHeader header">
+            <nav class="nav">
+                <div class="logo fade-enter-done" tabindex="-1">
+                    <a href="#" aria-label="home">
+                        </svg>
+                    </a>
+                </div>
+                <div class="nav-link">
+                    <ol>
+                        <li class="fadedown-enter-done visible slide-down"><a href="./offline.html#home">Home</a>
+                        <li class="fadedown-enter-done visible slide-down animation-delay delay-pt25"><a
+                                href="./offline.html#about">About
+                                IEI</a>
+                        </li>
+                        <li class="fadedown-enter-done visible slide-down animation-delay delay-pt75"><a
+                                href=''>Upcoming
+                                Events</a>
+                        </li>
+                        <li class="fadedown-enter-done visible slide-down animation-delay delay-1"><a href=''>Past
+                                Events</a></li>
+                        <li class="fadedown-enter-done visible slide-down animation-delay delay-1pt25"><a href=''>Team
+                                IEI</a>
+                        </li>
+                        <li class="fadedown-enter-done visible slide-down animation-delay delay-1pt5"><a
+                                href=''>Contact</a>
+                        </li>
+                    </ol>
+                </div>
+                <div class="menu fade-enter-done">
+                    <div>
+                        <button aria-label="Menu" class="hamburger" onclick="toggleMenubar(this)">
+                            <div class="ham-box">
+                                <div class="ham-box-inner"></div>
+                            </div>
+                        </button>
+                        <aside aria-hidden="true" tabindex="-1" class="menu_StyledSidebar menubar">
+                            <nav>
+                                <ol>
+                                    <li><a href="./offline.html#home">Home</a></li>
+                                    <li><a href="./offline.html#about">About IEI</a></li>
+                                    <li><a href="">Upcoming Events</a>
+                                    </li>
+                                    <li><a href="">Past Events</a></li>
+                                    <li><a href="">Team IEI</a>
+                                    </li>
+                                    <li><a href="">Contact</a>
+                                    </li>
+                                </ol>
+                            </nav>
+                        </aside>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <!----------------------------------- Right and Left Bars -------------------------------------->
+        <div orientation="left" class="left-bar visible slide-up animation-delay delay-1pt5">
+            <ul class="left-bar-ol fade-enter-done">
+                <li>
+                    <a href="" aria-label="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-github">
+                            <title>GitHub</title>
+                            <path
+                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                            </path>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" role="img"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram">
+                            <title>Instagram</title>
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16
+                                    11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg></a>
+                </li>
+                <li>
+                    <a href="" aria-label="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" role="img"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin">
+                            <title>LinkedIn</title>
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2
+                                    0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg></a>
+                </li>
+            </ul>
+        </div>
+        <div orientation="right" class="right-bar visible slide-up animation-delay delay-1pt5">
+            <div class="email__StyledLinkWrapper-sc-2epoq-0 right-bar-div fade-enter-done"><a
+                    href="mailto:iei.cse@chitkara.edu.in">iei.cse@chitkara.edu.in</a></div>
+        </div>
+        <!------------------------ Content Zone ------------------------------------------------>
+        <div id="content" tabindex="-1">
+            <main class="main fillHeight">
+                <!---------------------------Landing Text Section  ----------------------------->
+                <section class="landing-section" id="home">
+                    <div class="animate visible slide-up animation-delay delay-pt5">
+                        <h2 class="big-heading">IEI CIET</h2>
+                    </div>
+                    <div class="animate visible slide-up animation-delay delay-pt75">
+                        <h3 class="big-heading">STUDENT'S CHAPTER</h3>
+                    </div>
+                    <div class="animate visible slide-up animation-delay delay-1">
+                        <p>
+                            IE(I) Student Chapter is a <a>statutory body</a> of engineers to promote and advance
+                            engineering and technology throughout the country.
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet, <a>consectetur adipiscing</a> elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Etiam tempor orci eu lobortis elementum nibh.
+                        </p>
+                    </div>
+                    <div class="animate visible slide-up animation-delay delay-1pt25">
+                        <a href="" class="email-link">Contact Us</a>
+                    </div>
+                </section>
+                <!-------------------------- About Section -------------------------------------------------->
+                <section id="about" class="about-section">
+                    <h2 class="numbered-heading animate slide-up" id="about-us-heading">About Us</h2>
+                    <div class="inner">
+                        <div class="about-content">
+                            <div>
+                                <p class=" animate slide-up">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et <a>dolore magna aliqua</a>. Etiam tempor orci eu lobortis
+                                    elementum nibh. <a>Elementum integer</a> enim nequ volutpat ac tincidunt vitae. Nisl
+                                    pretium fusce id velit. Cursus euismod quis viverra nibh cras. Scelerisque varius
+                                    morbi eni nunc faucibus a.
+                                </p>
+                                <p class=" animate slide-up">
+                                    Vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor posuere.
+                                    Condimentum id venenatis a condimentum <a>vitae sapien</a>. Porttitor rhoncus dolor
+                                    <a>purus</a> non enim <a>praesent elementum</a>. Interdum <a>velit laoreet</a> id
+                                    donec ultrices. Vulputate sapien nec sagittis aliquam malesuada. Purus in massa
+                                    tempor nec feugiat. Ac orci phasellus egestas tellus rutrum. In vitae turpis massa
+                                    sed elementum tempus.
+                                </p>
+                                <p class=" animate slide-up">Here are a few technologies I've been working
+                                    with
+                                    recently:</p>
+                            </div>
+                            <ul class="skills-list animate slide-up">
+                                <li>JavaScript (ES6+)</li>
+                                <li>React</li>
+                                <li>Eleventy</li>
+                                <li>Vue</li>
+                                <li>Node.js</li>
+                                <li>WordPress</li>
+                            </ul>
+                        </div>
+                        <div class="swinging-logo slide-right">
+                            <h1>IEI CIET</h1>
+                        </div>
+                    </div>
+                </section>
+                <div id="footer-text">
+                    Developed by <a class="a" href="./team.html">Web Team</a> IEI CIET
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="./js/navbar.js"></script>
+    <script>
+        // Manual reload feature.
+        document.querySelector("button").addEventListener("click", () => {
+            window.location.reload();
+        });
+
+        // Listen to changes in the network state, reload when online.
+        // This handles the case when the device is completely offline.
+        window.addEventListener('online', () => {
+            window.location.reload();
+        });
+    </script>
+</body>
+
+</html>

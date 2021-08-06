@@ -1,0 +1,155 @@
+.overlay-loader {
+	position: fixed;
+	top: 0;
+	right: 0;
+	min-width: 100%;
+	min-height: 100vh;
+	z-index: 12;
+	background-color: #0a192f;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	transition: all 1s ease;
+}
+
+.swinging-logo {
+	position: relative;
+	max-width: 300px;
+}
+.swinging-logo h1 {
+	text-align: center;
+	font-size: 4.2rem;
+	text-align: right;
+	font-family: arial;
+	font-weight: 900;
+	color: transparent;
+	overflow: hidden;
+	background: linear-gradient(
+			45deg,
+			black 30%,
+			transparent 30%,
+			transparent 70%,
+			black 70%
+		),
+		linear-gradient(
+			-45deg,
+			black 30%,
+			transparent 30%,
+			transparent 70%,
+			black 70%
+		);
+	background-size: 20px 20px, 20px 20px, 1px 1px;
+	background-position: 0 0, 0 0, 0 0;
+	-webkit-background-clip: text;
+	-webkit-text-stroke: 4px var(--light-slate);
+	animation: bg-shift 1s ease-in-out infinite alternate-reverse,
+		swing 2s ease-in-out infinite;
+}
+.swinging-logo h1::before {
+	content: 'IEI CIET';
+	position: absolute;
+	background: linear-gradient(transparent 30%, var(--green), transparent 65%);
+	-webkit-background-clip: text;
+	animation: bg-shift2 2s ease-in-out infinite alternate-reverse;
+	-webkit-text-stroke: 2px var(--lightest-navy);
+}
+
+.nav-loader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 14;
+	width: 100%;
+	height: 3px;
+	background-color: #fff;
+	visibility: hidden;
+}
+.nav-loader-inner {
+	width: 25%;
+	height: 101%;
+	background-color: #495670;
+	animation: shimmer 1.5s linear infinite;
+}
+
+/* --------------------- Spinner Loader Section ----------------------------------- */
+.card-body.loading {
+	min-height: 300px;
+	overflow: visible !important;
+}
+#spinner-loader-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	background-color: var(--admin-panel-cards-bg);
+	overflow: hidden;
+}
+#spinner-loader {
+	display: block;
+	position: relative;
+	left: 50%;
+	top: 50%;
+	width: 150px;
+	height: 150px;
+	margin: -75px 0 0 -75px;
+	border-radius: 50%;
+	border: 3px solid transparent;
+	border-top-color: #16a085;
+	animation: spin 1.7s linear infinite;
+	z-index: 11;
+}
+#spinner-loader:before {
+	content: '';
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	right: 5px;
+	bottom: 5px;
+	border-radius: 50%;
+	border: 3px solid transparent;
+	border-top-color: #e74c3c;
+	animation: spin-reverse 0.6s linear infinite;
+}
+#spinner-loader:after {
+	content: '';
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	right: 15px;
+	bottom: 15px;
+	border-radius: 50%;
+	border: 3px solid transparent;
+	border-top-color: #f9c922;
+	animation: spin 1s linear infinite;
+}
+
+/* Loaded styles */
+#spinner-loader-wrapper.spin-loaded {
+	opacity: 0;
+	transition: all 1s ease-out;
+}
+
+@media (max-width: 1080px) {
+	.swinging-logo h1 {
+		font-size: 3rem;
+	}
+}
+
+@media (max-width: 768px) {
+	.swinging-logo {
+		margin-top: 20px;
+	}
+	.swinging-logo h1 {
+		text-align: center;
+		font-size: 4.2rem;
+	}
+}
+
+@media (max-width: 320px) {
+	.swinging-logo h1 {
+		font-size: 3.2rem;
+	}
+}

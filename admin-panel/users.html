@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a192f">
+    <meta name="description"
+        content=" IE(I) Student Chapter is a statutory body of engineers to promote and advance engineering and technology throughout the country." />
+    <meta name="keywords"
+        content="IEI, IEI-CIET, IE(I), Student's Chapter, IE(I) Society, Society, Chitkara University, IE(I) Chitkara, iei, ie(i), iei-ciet, ieiciet" />
+    <meta name="language" content="English" />
+    <meta name="author" content="IEI CIET" />
+
+    <!-- Mainfest File & Favicon -->
+    <link rel="icon" href="../assets/icons/favicon.ico" />
+    <link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="../manifest.json">
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+
+    <script src="../js/auth.js"></script>
+    <script>
+        let firebaseConfig = {
+            apiKey: 'MY_API_KEY',
+            authDomain: 'MY_AUTH_DOMAIN',
+            projectId: 'MY_PROJECT',
+            storageBucket: 'MY_STORAGE_BUCKET',
+            messagingSenderId: 'MY_MESSAGING_SENDER_ID',
+            appId: 'MY_APP_ID',
+            measurementId: 'MY_MEASUREMENT_ID',
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+        db.ref(`users/${localStorage.getItem('uid')}`).on('value', snapshot => {
+            const user = snapshot.val();
+            if (user.role !== 'admin') {
+                window.location.assign('/index.html');
+            } else {
+                document.getElementsByClassName(
+                    'overlay-loader'
+                )[0].style.opacity = 0;
+
+                setTimeout(() => {
+                    document
+                        .getElementsByClassName('overlay-loader')[0]
+                        .classList.add('d-none');
+                    document.getElementsByClassName(
+                        'overlay-loader'
+                    )[0].style.opacity = null;
+                }, 1000);
+                for (let ele of document.querySelectorAll('.animate')) {
+                    ele.classList.add('visible');
+                }
+                document.getElementById('root').style.display = null;
+            }
+        },
+            err => {
+                console.error(err);
+                window.location.assign('/index.html');
+            }
+        );
+        auth(firebase, db);
+    </script>
+    <script>
+        firebase.auth().onAuthStateChanged((user) => {
+            if (!user) {
+                localStorage.removeItem('uid');
+                window.location.assign('/signin.html');
+            }
+        });
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!-- Material Icons -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
+    <!-- Chartlist-js -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <!-- Css -->
+    <link rel="stylesheet" href="../css/root.css">
+    <link rel="stylesheet" href="../css/keyframes.css">
+    <link rel="stylesheet" href="../css/loader.css">
+    <link rel="stylesheet" href="../css/admin-panel.css">
+    <link rel="stylesheet" href="../css/admin-panel/users.css">
+    <title>IEI CIET | Admin Panel</title>
+</head>
+
+<body>
+    <div id="appInstallPrompt">
+        <p>Download the IE(I) app for better experience</p>
+        <div>
+            <button type="button" id="cancel" onclick="hideDownloadPrompt()">Cancel</button>
+            <button type="button" onclick="downloadButtonClick()">Download</button>
+        </div>
+        <span class="material-icons-outlined" onclick="hideDownloadPrompt()">close</span>
+    </div>
+    <div class="overlay-loader">
+        <div class="swinging-logo">
+            <h1>IEI CIET</h1>
+        </div>
+    </div>
+    <div id="root" style="display: none;">
+        <div class="sidebar-wrapper">
+            <div class="sidebar">
+                <div class="logo text-center">
+                    <a href="../index.html">IEI CIET</a>
+                </div>
+                <div class="list-wrapper">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a href="../admin-panel.html" class="nav-link">
+                                <i class="material-icons">dashboard</i>
+                                <p>dashboard</p>
+                            </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="../admin-panel/users.html">
+                                <i class="material-icons">person</i>
+                                <p>Manage Users</p>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="../admin-panel/events.html">
+                                <i class="material-icons-outlined">
+                                    event
+                                </i>
+                                <p>Manage Events</p>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="../admin-panel/team.html">
+                                <i class="material-icons-outlined" style="font-size: 2rem;">
+                                    groups
+                                </i>
+                                <p>Manage Team</p>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="../admin-panel/gallery.html">
+                                <i class="material-icons-outlined" style="font-size: 2rem;">
+                                    collections
+                                </i>
+                                <p>Manage Gallery</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="underground-body d-flex flex-direction-column d-none">
+            <div class="sidebar">
+                <div class="logo text-center">
+                    <a href="../index.html" class="font-weight-bold">IEI CIET</a>
+                </div>
+                <div class="list-wrapper d-flex align-items-center">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a href="../admin-panel.html" class="nav-link">
+                                <i class="material-icons">dashboard</i>
+                                <p>dashboard</p>
+                            </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="../admin-panel/users.html">
+                                <i class="material-icons">person</i>
+                                <p>Manage Users</p>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="../admin-panel/events.html">
+                                <i class="material-icons-outlined">
+                                    event
+                                </i>
+                                <p>Manage Events</p>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="../admin-panel/team.html">
+                                <i class="material-icons-outlined" style="font-size: 2rem;">
+                                    groups
+                                </i>
+                                <p>Manage Team</p>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="../admin-panel/gallery.html">
+                                <i class="material-icons-outlined" style="font-size: 2rem;">
+                                    collections
+                                </i>
+                                <p>Manage Gallery</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <main id="main">
+            <div class="container-fluid">
+                <div class="row main-head justify-content-space">
+                    <div class="col d-flex align-items-center">
+                        <button aria-label="Menu" class="ham hamburger d-md-none" onclick="toggleMenubar(this)">
+                            <div class="ham-box">
+                                <div class="ham-box-inner"></div>
+                            </div>
+                        </button>
+                        <h1>Manage Users</h1>
+                    </div>
+                    <div class="col-1 text-right">
+                        <a href="../user/profile.html"><i class="material-icons">person</i></a>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-11 col-xl card card-chart data-list-card" id="users-list-card">
+                        <div class="card-header card-header-success">
+                            <h4 class="card-title">Users List</h4>
+                            <p class="card-category">List of all users with their details</p>
+                        </div>
+                        <!-- <div class="card-body loading"> -->
+                        <div class="card-body loading">
+                            <div id="spinner-loader-wrapper">
+                                <div id="spinner-loader"></div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-dark table-hover table-responsive">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col"></th>
+                                            <!-- <th scope="col"></th> -->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="footer-text">
+                Developed by <a class="a" href="../team.html">Web Team</a> IEI CIET
+            </div>
+        </main>
+    </div>
+
+    <!-- Bootstrap JS Files-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+    <!-- Chartlist-js JS Files -->
+    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <script
+        src=" https://cdn.jsdelivr.net/npm/chartist-plugin-pointlabels@0.0.6/dist/chartist-plugin-pointlabels.min.js"></script>
+
+    <script src="../js/admin-panel.js"></script>
+    <script src="../js/admin-panel/users.js" defer></script>
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                sessionStorage.setItem('openedUserAccordions', '');
+                sessionStorage.setItem('openedUsersChildNodes', '');
+                fetchUsersListAndUdpateTable();
+            });
+        }, 1100);
+    </script>
+    <script>
+        window.addEventListener('offline', () => {
+            window.location.reload();
+        });
+    </script>
+    <script src="../js/downloadPrompt.js"></script>
+    <script>
+        window.addEventListener('offline', () => {
+            window.location.assign('/index.html')
+        });
+    </script>
+</body>
+
+</html>
